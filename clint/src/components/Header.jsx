@@ -1,7 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { assets } from '../assets/assets'
-
+import {useNavigate} from 'react-router-dom'
+import { AppContext } from '../context/AppContext'
 const Header = () => {
+
+  const { user, setShowLogin } = useContext(AppContext)
+  const navigate = useNavigate()
+
+    const onClickHandle = ()=>{
+      if (user) {
+          navigate('/result')
+      }else{
+        setShowLogin(true)
+      }
+    }
+
+
   return (
     <div className='relative overflow-hidden rounded-4xl border border-white/10 bg-white/10 p-6 shadow-2xl shadow-slate-950/20 backdrop-blur-xl my-20'>
       <div className='pointer-events-none absolute -left-20 top-8 h-56 w-56 rounded-full bg-sky-400/20 blur-3xl'></div>
@@ -19,7 +33,7 @@ const Header = () => {
           Unleash your creativity with AI-powered imagery. Type your vision and watch it transform into high-quality visuals in seconds.
         </p>
 
-        <button className='fade-in-up group inline-flex items-center gap-3 rounded-full px-10 py-3 text-base font-semibold text-white shadow-xl shadow-cyan-500/20 transition-transform duration-500 hover:-translate-y-1 hover:shadow-cyan-500/40' style={{ backgroundImage: 'linear-gradient(90deg, #06b6d4, #3b82f6)' }}>
+        <button onClick={onClickHandle} className='fade-in-up group inline-flex items-center gap-3 rounded-full px-10 py-3 text-base font-semibold text-white shadow-xl shadow-cyan-500/20 transition-transform duration-500 hover:-translate-y-1 hover:shadow-cyan-500/40' style={{ backgroundImage: 'linear-gradient(90deg, #06b6d4, #3b82f6)' }}>
           Generate Images
           <img className='h-6 w-6 rounded-full bg-white/15 p-1 transition-transform duration-500 group-hover:scale-110' src={assets.star_group} alt='' />
         </button>
