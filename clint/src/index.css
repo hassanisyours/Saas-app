@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import "tailwindcss";
+
+* {
+  font-family: 'Outfit', sans-serif;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.18), transparent 20%),
+    radial-gradient(circle at top right, rgba(251, 191, 36, 0.16), transparent 18%),
+    radial-gradient(circle at bottom, rgba(134, 239, 172, 0.14), transparent 18%),
+    #f8fafc;
+  color: #0f172a;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(59, 130, 246, 0.25);
+  color: #0f172a;
+}
+
+.frosted-card {
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+.glow-border {
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  box-shadow: 0 18px 60px rgba(56, 189, 248, 0.12);
+}
+
+.fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.9s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.hero-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0 rgba(59, 130, 246, 0.25));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 40px rgba(59, 130, 246, 0.18));
+    transform: scale(1.02);
+  }
+}
+
+.pulse-glow {
+  animation: pulseGlow 3.5s ease-in-out infinite;
+}
+
+.hero-ring {
+  position: absolute;
+  top: -24px;
+  right: -24px;
+  width: 120px;
+  height: 120px;
+  border-radius: 9999px;
+  border: 2px solid rgba(59, 130, 246, 0.3);
+}
